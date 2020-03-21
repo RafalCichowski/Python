@@ -1,0 +1,76 @@
+# Kod poprawiony o czytelność i wygodniejsze nazewnictwo zmiennych, oraz dodawanie 376 jako ósemkowej [ potraktowałeś to jako dziesiętną]
+
+N = 11 #numer w dzienniku
+
+A = 2*N+1 # A
+
+B = (bin(A))  #na binarne
+C = (oct(A))  #na oktalne
+D = (hex(A))  #na hexadecymalne
+
+
+print ("A[2*11 + 1] = " + str(A)) # wyświetlanie łańcucha znaków (stringa) w pythonie wymaga potraktowania liczby jako łańcuch
+print ("B[bin(A)] = " + B)  # funkcje bin,oct,hex realizują zmianę liczby w łańcuch znaków domyślnie, więc nie trzeba używać przy nich
+print ("C[oct(A)] = " + C)  # str(zmienna) funkcji zmieniającej liczbę w łańcuch znaków (string)
+print ("D[hex(A)] = " + D)
+
+
+E=A+int('376',8) # Dodawanie w systemie ósemkowym, tak naprawdę nie odbywa się do końca w ósemkowym tylko w dziesiętnym
+                 # funkcja int ('376',8) traktuje string '376' jako liczbę w ósemkowym i tłumaczy ją na dziesiętny, by dodać ją do A 
+                 # które już jest w dziesiętnym - patrz linia 5
+
+E=oct(E)# oct(E) tłumaczy zmienną dziesiętną E na łańcuch znaków o standardzie ósemkowym    
+        
+
+print (" ")#dodanie pustej linii w celu czytelnego wyświetlania
+
+
+print (" Dodawanie w ósemkowym")
+print ("E[oct(A) + 376] = C + 376 = "+ C + " + 376 = "+ E)
+
+
+print (" ")#dodanie pustej linii w celu czytelnego wyświetlania
+
+
+F=A+int('A08',16)# patrz linia 18
+F=hex(F) # patrz linia 22
+
+print (" Dodawanie w szesnastkowym")
+print ("F[hex(A) + A08] = D + A08 = "+ D + " + A08 = "+ F)
+
+print (" ")#dodanie pustej linii w celu czytelnego wyświetlania
+
+print (" Przejscie na binarny")
+
+
+E=bin(int(E,8)) #funkcja bin za argument przyjmuje liczbę, dlatego tłumaczymy E ze stringa [oct] do liczby dziesiętnej, by następnie zapisać go binarnie
+F=bin(int(F,16)) # jak wyżej
+
+print (" W binarnym E = "+ E)
+print (" W binarnym F = "+ F)
+
+
+print (" ")#dodanie pustej linii w celu czytelnego wyświetlania
+
+
+
+print (" Dodawanie w binarnym :")
+
+Suma=int(B,2)+int(E,2)+int(F,2)
+iSuma=int(Suma)# w tej linii zapisuję sume w dziesiętnym, by uniknąć tłumaczenia jej kolejno z str[bin] na bin i z bin na int w linii 74
+Suma=bin(Suma)
+
+print ("Suma = B + E + F = "+ B +" + " + E +" + " + F +" = Suma = "+Suma)
+
+print (" ")#dodanie pustej linii w celu czytelnego wyświetlania
+
+print ("Przejście na dziesiętny : ")
+
+print (" Suma [bin] = "+ Suma +" = Suma [dec] = "+ str(iSuma))
+
+print (" ")#dodanie pustej linii w celu czytelnego wyświetlania
+
+print ("Odejmowanie w dziesiętnym :")
+Wynik= int(Suma,2)-A
+print (" Wynik = Suma - A = "+ str(iSuma) +" - "+ str(A)+" = Wynik = "+ str(Wynik))
+
